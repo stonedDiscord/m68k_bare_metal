@@ -9,7 +9,7 @@ ENV m68kbm_PATH="/opt/m68kbm"
 
 RUN apk add --no-cache build-base m4 gmp mpfr4 mpc \
     && apk add --no-cache -t .build_deps git wget gmp-dev mpfr-dev mpc1-dev \
-    && git clone --depth 1 --recursive https://github.com/stonedDiscord/m68kbm_bare_metal.git ${m68kbm_PATH} \
+    && git clone --depth 1 --recursive https://github.com/stonedDiscord/m68k_bare_metal.git ${m68kbm_PATH} \
     && cd ${m68kbm_PATH} \
     && chmod +x *.sh \
     && ./linux-build-toolchain.sh \
