@@ -41,7 +41,7 @@ if [ ! -f $PREFIX-$GCCVER/bin/$TARGET-nm ]; then
   mkdir -p toolchain/build/binutils
   (cd toolchain/build/binutils && ../../sources/$BINUTILS/configure --target=$TARGET --disable-werror --prefix=$PREFIX-$GCCVER && make -j $CORES && make install) || exit 1
 fi
-
+echo Done building binutils
 if [ ! -f $PREFIX-$GCCVER/bin/$TARGET-gcc ]; then
   echo Building GCC
   mkdir -p toolchain/build/gcc
@@ -49,11 +49,11 @@ if [ ! -f $PREFIX-$GCCVER/bin/$TARGET-gcc ]; then
   if [ -e /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     echo "Windows Subsystem for Linux (WSL)"
     (cd toolchain/sources/$GCC && contrib/download_prerequisites) || exit 1
-    (cd toolchain/build/gcc && ../../sources/$GCC/configure --target=$TARGET --disable-werror --prefix=$PREFIX-$GCCVER --enable-languages=c && make -j $CORES all-gcc && make install-gcc) || exit 1
-  else
-    (cd toolchain/build/gcc && ../../sources/$GCC/configure --target=$TARGET --disable-werror --prefix=$PREFIX-$GCCVER --enable-languages=c --with-gmp=/usr/local --with-mpfr=/usr/local --with-mpc=/usr/local && make -j $CORES all-gcc && make install-gcc) || exit 1
   fi
+  (cd toolchain/build/gcc && ../../sources/$GCC/configure --target=$TARGET --disable-werror --prefix=$PREFIX-$GCCVER --enable-languages=c && make -j $CORES all-gcc && make install-gcc) || exit 1
 
 fi
 
 echo All done!
+
+exit 0
