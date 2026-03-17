@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /usr/bin/env sh
 
 ###############################################################################
 # Credit for this script goes to https://github.com/deplinenoise

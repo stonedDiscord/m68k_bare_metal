@@ -8,17 +8,13 @@ FROM alpine:latest
 ENV m68k_PATH="/opt/m68k"
 
 RUN apk add --no-cache build-base libxml2 m4 gmp \
-    && apk add --no-cache -t .build_deps bison flex libxml2-dev git subversion boost-dev texinfo \
-		perl-template-toolkit perl-app-cpanminus curl gmp-dev \
-    && cpanm -l $HOME/perl5 --no-wget local::lib Template::Plugin::YAML \
+    && apk add --no-cache -t .build_deps bison flex libxml2-dev git texinfo \
     && git clone --depth 1 --recursive https://github.com/stonedDiscord/m68k_bare_metal.git ${m68k_PATH} \
-    && cd ${m68k_PATH} \ 
-    && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)" \
+    && cd ${m68k_PATH} \
     && chmod +x *.sh \
     && ./linux-build-toolchain.sh \
-    && cd libmetal
-    && make \
-    && apk del .build_deps
+    && cd libmetal \
+    && make
 
 ENV PATH="${m68k_PATH}/bin:${PATH}"
 
