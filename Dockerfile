@@ -8,15 +8,18 @@ FROM alpine:latest
 ENV m68kbm_PATH="/opt/m68kbm"
 
 RUN apk add --no-cache build-base m4 gmp mpfr4 mpc \
-    && apk add --no-cache -t .build_deps git wget gmp-dev mpfr-dev mpc1-dev \
-    && git clone --depth 1 --recursive https://github.com/stonedDiscord/m68k_bare_metal.git ${m68kbm_PATH} \
+    && apk add --no-cache -t .build_deps git wget gmp-dev mpfr-dev mpc1-dev
+
+RUN git clone --depth 1 --recursive https://github.com/stonedDiscord/m68k_bare_metal.git ${m68kbm_PATH} \
     && cd ${m68kbm_PATH} \
     && chmod +x *.sh \
-    && ./linux-build-toolchain.sh \
-    && cd libmetal \
-    && make \
-    && apk del .build_deps
+    && ./linux-build-toolchain.sh
 
-ENV PATH="${m68kbm_PATH}/bin:${PATH}"
+ENV PATH="${m68kbm_PATH}/toolchain/m68k-eabi-elf-13.4.0/bin:${PATH}"
+
+RUN cd ${m68kbm_PATH}/libmetal \
+    && make
+
+RUN apk del .build_deps
 
 WORKDIR /src/
