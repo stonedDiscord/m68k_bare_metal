@@ -6,7 +6,7 @@ mkdir -p toolchain
 mkdir -p toolchain/sources
 mkdir -p toolchain/build
 
-CORES=8
+CORES=4
 TARGET=m68k-eabi-elf
 PREFIX=$PWD/toolchain/$TARGET
 
@@ -55,5 +55,6 @@ if [ ! -f $PREFIX-$GCCVER/bin/$TARGET-gcc ]; then
   fi
 
 fi
-
+echo Adding to path.
+export PATH="$PREFIX/bin:$PATH"
 echo All done!
