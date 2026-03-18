@@ -17,7 +17,7 @@ RUN git clone --depth 1 --recursive https://github.com/stonedDiscord/m68k_bare_m
 RUN cd ${m68kbm_PATH} \
     && ./linux-build-toolchain.sh
 
-ENV PATH="${m68kbm_PATH}/toolchain/m68k-eabi-elf-13.4.0/bin:${PATH}"
+ENV PATH="${m68kbm_PATH}/toolchain/m68k-eabi-elf-15.2.0/bin:${PATH}"
 
 RUN cd ${m68kbm_PATH}/libmetal \
     && make
