@@ -12,7 +12,9 @@ RUN apk add --no-cache build-base m4 gmp mpfr4 mpc \
 
 RUN git clone --depth 1 --recursive https://github.com/stonedDiscord/m68k_bare_metal.git ${m68kbm_PATH} \
     && cd ${m68kbm_PATH} \
-    && chmod +x *.sh \
+    && chmod +x *.sh
+
+RUN cd ${m68kbm_PATH} \
     && ./linux-build-toolchain.sh
 
 ENV PATH="${m68kbm_PATH}/toolchain/m68k-eabi-elf-13.4.0/bin:${PATH}"
