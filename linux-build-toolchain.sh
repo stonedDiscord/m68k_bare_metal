@@ -13,10 +13,10 @@ PREFIX=$PWD/toolchain/$TARGET
 MIRROR=http://ftpmirror.gnu.org
 # MIRROR=https://mirror.team-cymru.com/gnu
 
-BINUTILS=binutils-2.44
+BINUTILS=binutils-2.46
 BINUTILS_URL=$MIRROR/binutils/$BINUTILS.tar.xz
 
-GCCVER=13.4.0
+GCCVER=15.2.0
 GCC=gcc-$GCCVER
 GCC_URL=$MIRROR/gcc/$GCC/$GCC.tar.xz
 
