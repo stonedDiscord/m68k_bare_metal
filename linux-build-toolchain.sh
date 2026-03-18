@@ -6,7 +6,7 @@ mkdir -p toolchain
 mkdir -p toolchain/sources
 mkdir -p toolchain/build
 
-CORES=1
+CORES=4
 TARGET=m68k-eabi-elf
 PREFIX=$PWD/toolchain/$TARGET
 
