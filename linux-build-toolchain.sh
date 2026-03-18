@@ -41,16 +41,22 @@ if [ ! -f $PREFIX-$GCCVER/bin/$TARGET-nm ]; then
   mkdir -p toolchain/build/binutils
   (cd toolchain/build/binutils && ../../sources/$BINUTILS/configure --target=$TARGET --disable-werror --prefix=$PREFIX-$GCCVER && make -j $CORES && make install) || exit 1
 fi
-echo Done building binutils
+echo Done with binutils
 if [ ! -f $PREFIX-$GCCVER/bin/$TARGET-gcc ]; then
-  echo Building GCC
+  echo GCC setup
   mkdir -p toolchain/build/gcc
 
   if [ -e /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     echo "Windows Subsystem for Linux (WSL)"
     (cd toolchain/sources/$GCC && contrib/download_prerequisites) || exit 1
   fi
-  (cd toolchain/build/gcc && ../../sources/$GCC/configure --target=$TARGET --disable-werror --prefix=$PREFIX-$GCCVER --enable-languages=c && make -j $CORES all-gcc && make install-gcc) || exit 1
+  cd toolchain/build/gcc
+  echo Configuring GCC
+  ../../sources/$GCC/configure --target=$TARGET --disable-werror --prefix=$PREFIX-$GCCVER --enable-languages=c
+  echo Building GCC
+  make -j $CORES all-gcc
+  echo Installing GCC
+  make install-gcc
 
 fi
 
