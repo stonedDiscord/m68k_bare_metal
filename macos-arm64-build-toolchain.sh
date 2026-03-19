@@ -57,7 +57,7 @@ MIRROR=http://ftpmirror.gnu.org
 BINUTILS=binutils-2.46.0
 BINUTILS_URL=$MIRROR/binutils/$BINUTILS.tar.xz
 
-GCCVER=15.2.0
+GCCVER=14.3.0
 GCC=gcc-$GCCVER
 GCC_URL=$MIRROR/gcc/$GCC/$GCC.tar.xz
 
