@@ -21,7 +21,7 @@ CC=$(PREFIX)-gcc
 AR=$(PREFIX)-ar
 OBJDUMP=$(PREFIX)-objdump
 
-CFLAGS=-m$(CPU) -Wall -g -static -I../include/ -msoft-float -MMD -MP -O3
+CFLAGS=-m$(CPU) -Wall -g -static -I../include/ -msoft-float -MMD -MP -O3 -std=c17
 
 C_SRCS=$(shell find . -name '*.c')
 S_SRCS=$(shell find . -name '*.s')
