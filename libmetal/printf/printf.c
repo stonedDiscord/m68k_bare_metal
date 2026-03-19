@@ -238,7 +238,7 @@ static inline void out_putchar(char character, void* buffer, size_t idx, size_t 
 {
   (void)buffer; (void)idx; (void)maxlen;
   if (character) {
-    _putchar(character);
+    putchar_(character);
   }
 }
 
