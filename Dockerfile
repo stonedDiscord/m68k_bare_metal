@@ -21,7 +21,7 @@ ENV PATH="${m68kbm_PATH}/toolchain/m68k-eabi-elf-13.4.0/bin:${PATH}"
 RUN cd ${m68kbm_PATH}/libmetal \
     && make
 
-RUN apt -y remove m4 libmpc3 libmpc-dev libmpfr6 libmpfr-dev libgmp10 libgmp-dev
+RUN apt -y remove m4 libmpc3 libmpc-dev libmpfr6 libmpfr-dev libgmp-dev
 RUN apt -y autoremove && apt clean autoclean
 RUN rm -rf ${m68kbm_PATH}/toolchain/build
 RUN rm -rf ${m68kbm_PATH}/toolchain/sources
