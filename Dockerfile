@@ -7,7 +7,7 @@ FROM debian:bookworm-slim
 
 ENV m68kbm_PATH="/opt/m68k_bare_metal"
 
-RUN apt update && apt -y install binutils build-essential m4 make libmpc3 libmpc-dev libmpfr6 libmpfr-dev git wget libgmp10 libgmp-dev srecord xxd
+RUN apt update && apt -y install binutils build-essential m4 make libmpc3 libmpc-dev libmpfr6 libmpfr-dev git wget libgmp10 libgmp-dev srecord xxd zip
 
 RUN git clone --depth 1 --recursive https://github.com/stonedDiscord/m68k_bare_metal.git ${m68kbm_PATH} \
     && cd ${m68kbm_PATH} \
