@@ -10,7 +10,7 @@ CORES=8
 TARGET=m68k-eabi-elf
 PREFIX=$PWD/toolchain/$TARGET
 
-MIRROR=http://ftpmirror.gnu.org
+MIRROR=https://ftp.gnu.org/gnu
 # MIRROR=https://mirror.team-cymru.com/gnu
 
 BINUTILS=binutils-2.44
