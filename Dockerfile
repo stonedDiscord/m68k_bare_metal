@@ -20,17 +20,17 @@ ENV PATH="${m68kbm_PATH}/toolchain/m68k-eabi-elf-13.4.0/bin:${PATH}"
 
 RUN cd ${m68kbm_PATH}/libmetal \
     && make \
-    && sed -i -e 's/CPU=68000/CPU=68010/g' hello.txt \
+    && sed -i -e 's/68000/68010/g' Makefile \
     && make \
-    && sed -i -e 's/CPU=68010/CPU=68020/g' hello.txt \
+    && sed -i -e 's/68010/68020/g' Makefile \
     && make \
-    && sed -i -e 's/CPU=68020/CPU=68030/g' hello.txt \
+    && sed -i -e 's/68020/68030/g' Makefile \
     && make \
-    && sed -i -e 's/CPU=68030/CPU=68040/g' hello.txt \
+    && sed -i -e 's/68030/68040/g' Makefile \
     && make \
-    && sed -i -e 's/CPU=68040/CPU=68060/g' hello.txt \
+    && sed -i -e 's/68040/68060/g' Makefile \
     && make \
-    && sed -i -e 's/CPU=68060/CPU=cpu32/g' hello.txt \
+    && sed -i -e 's/68060/cpu32/g' Makefile \
     && make
 
 RUN apt -y autoremove && apt clean autoclean
