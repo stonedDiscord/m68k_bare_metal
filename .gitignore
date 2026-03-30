@@ -64,3 +64,5 @@ dkms.conf
 toolchain/build/
 toolchain/m68k-eabi-elf-13.4.0/
 toolchain/sources/
+
+**bmbinary*
